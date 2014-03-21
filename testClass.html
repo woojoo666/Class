@@ -1,33 +1,54 @@
 <html>
+
 <body>
-<div id="log">LOG:<br></div>
-<script src="Class.js"></script>
-<script type="text/javascript">
-
-function log(str) {
-	document.getElementById('log').innerHTML += str + '<br>';
-	console.log(str);
-}
-
-var Superclass = Class.extend({
-    overriden: function() {
-        log('Superclass: overriden()');
-    },
-    inherited: function() {
-        log('Superclass: inherited()');
+    <div id="log">LOG:
+        <br>
+    </div>
+    <script src="Class.js"></script>
+    <script type="text/javascript">
+    function log(str) {
+        document.getElementById('log').innerHTML += str + '<br>';
+        console.log(str);
     }
-});
 
-var Subclass = Superclass.extend({
-    overriden: function() {
-        log('Subclass: overriden()');
-    }
-});
+    var Superclass = Class.extend({
+        construct: function() {
+            this.school = 'UCLA';
+            this.occupation = 'student';
+            this.grade = 'A+++, come at me bro';
+        },
+        overriden: function() {
+            log('Superclass: overriden()');
+        },
+        inherited: function() {
+            log('Superclass: inherited()');
+        },
+        talkdirtytome: function() {
+            log('Wasup dawg, I am a ' + this.occupation + ' at ' + this.school + '. My grades? ' + this.grade);
+        }
+    });
 
-var sub = new Subclass();
-sub.overriden();
-sub.overriden.uber();
-sub.inherited();
-</script>
+    var Subclass = Superclass.extend({
+        construct: function() {
+            uber(); //first construct superclass
+            this.school = 'Greendale';
+            this.grade = 'does it even matter?';
+            this.troyandabed = 'in the moooorrning';
+        },
+        overriden: function() {
+            log('Subclass: overriden()');
+        }
+    });
+
+    var superc = new Superclass();
+    var subc = new Subclass();
+    subc.overriden();
+    subc.overriden.uber();
+    subc.inherited();
+
+    superc.talkdirtytome();
+    subc.talkdirtytome();
+    </script>
 </body>
+
 </html>
