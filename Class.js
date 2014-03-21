@@ -1,6 +1,6 @@
 var Class = function() {};
 Class.extend = function(proto) {
-    var subclass = function() {}; //make new subclass
+    var subclass = proto.construct || function(){}; //make new subclass
     subclass.prototype = new this(); //inherit prototype
     subclass.extend = this.extend; //copy extend function
 
@@ -14,3 +14,7 @@ Class.extend = function(proto) {
 
     return subclass;
 };
+
+function uber() {
+  return arguments.callee.caller.uber();
+}
