@@ -31,7 +31,7 @@ This method will automatically be called when you create a new instance.
 
 
 `Class` is a class itself, so this is actually making a subclass of `Class`.
-You can do this with any class by replacing `Class`, eg.
+You can do this with any superclass, eg.
 
 	var subClass = baseClass.extend({subclass-prototype});
 
@@ -41,25 +41,30 @@ Parent class properties and methods are inherited, and can be overriden.
 Accessing the Parent Class
 --------------------------
 
-To access a method's superclass method from inside the function, you can just use the `uber()` keyword.
+To access a class's superclass, use `myclass.uber`.
+To access a function's superclass method from inside the function, you can just use the `uber()` keyword.
 To call the superclass method from anywhere, use the function's `uber` property. Using this, you can even do constructor chaining.
 
 For example, continuing from the previously defined `baseClass`
 
 	var subClass = baseClass.extend({
 		construct: function() {
-			uber('m&m'); //call the parent constructor
+			uber('m&m'); //call the superclass's construct()
 			this.catchphrase = 'but Im not a wrapper';
 		}
 	})
 
 	var mySub = new subClass();
-	mySub.construct.uber('Rap God'); //call the function's parent function to change my 'name'
-	mySub.uber.construct('Rap God'); //call the parent class's function to change my 'name' (same effect)
+	mySub.construct.uber('Rap God'); //call the subClass.construct's superclass method to change my 'name'
+	mySub.uber.construct('Rap God'); //call superClass.construct() to change my 'name' (same effect)
 
 
 Notes
 -----
+
+Normally, if you have function `foo()` with property `bar()`, calling `foo.bar()` will run `bar`
+from the scope of function `foo`. However, I rigged the `uber()` property to always run from the scope
+of the class its in.
 
 Please don't modify or reassign `Class` or `uber`, treat them like reserved words.
 I am not responsible for any code deaths.
