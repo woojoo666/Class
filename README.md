@@ -8,7 +8,7 @@ Includes:
 - Easy subclassing
 - Accessing parent class and parent functions
 
-To use it, just include the `Class.js` file in your page. The testClass.html file is just an example. For an in-depth tutorial, read on!
+To use it, just include the `Class.js` file in your page. The `testClass.html` file is just an example. For an in-depth tutorial, read on!
 
 Declaring a new Class or Subclass
 ---------------------------------
@@ -18,7 +18,7 @@ Use syntax:
 	Class.extend({prototype})
 
 You can also declare a constructor function in the prototype using the `construct` property.
-A construct() method is automatically called when you create an instance.
+This method will automatically be called when you create a new instance.
 
 	var baseClass = Class.extend({
 		construct: function(name) {
@@ -30,19 +30,20 @@ A construct() method is automatically called when you create an instance.
 	var myBase = new Baseclass('Based God');
 
 
-`Class` is a class itself, so this is actually making a subclass of `Class`
-You can make a subclass of any class by replacing `Class`, eg
+`Class` is a class itself, so this is actually making a subclass of `Class`.
+You can do this with any class by replacing `Class`, eg.
 
 	var subClass = baseClass.extend({subclass-prototype});
 
-Parent class's properties and methods are inherited, and can be overriden.
+Parent class properties and methods are inherited, and can be overriden.
 
 
 Accessing the Parent Class
 --------------------------
 
-Inside a prototype function, you can just use the `uber()` keyword.
-You can also use the function's `uber` property. You can even do constructor chaining.
+To access a method's superclass method from inside the function, you can just use the `uber()` keyword.
+To call the superclass method from anywhere, use the function's `uber` property. Using this, you can even do constructor chaining.
+
 For example, continuing from the previously defined `baseClass`
 
 	var subClass = baseClass.extend({
