@@ -1,0 +1,33 @@
+<html>
+<body>
+<div id="log">LOG:<br></div>
+<script src="Class.js"></script>
+<script type="text/javascript">
+
+function log(str) {
+	document.getElementById('log').innerHTML += str + '<br>';
+	console.log(str);
+}
+
+var Superclass = Class.extend({
+    overriden: function() {
+        log('Superclass: overriden()');
+    },
+    inherited: function() {
+        log('Superclass: inherited()');
+    }
+});
+
+var Subclass = Superclass.extend({
+    overriden: function() {
+        log('Subclass: overriden()');
+    }
+});
+
+var sub = new Subclass();
+sub.overriden();
+sub.overriden.uber();
+sub.inherited();
+</script>
+</body>
+</html>
