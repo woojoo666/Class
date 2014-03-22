@@ -8,7 +8,7 @@ Includes:
 - Easy subclassing
 - Accessing parent class and parent functions
 
-To use it, just include the `Class.js` file in your page. The `testClass.html` file is just an example. For an in-depth tutorial, read on!
+To use it, just include `Class.js` in your page. The `testClass.html` file is just an example. For an in-depth tutorial, read on!
 
 Declaring a new Class or Subclass
 ---------------------------------

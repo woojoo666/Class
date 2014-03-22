@@ -12,7 +12,8 @@
     }
 
     var Superclass = Class.extend({
-        construct: function() {
+        construct: function(name) {
+            this.name = name;
             this.school = 'UCLA';
             this.occupation = 'student';
             this.grade = 'A+++, come at me bro';
@@ -24,13 +25,13 @@
             log('Superclass: inherited()');
         },
         talkdirtytome: function() {
-            log('Wasup dawg, I am a ' + this.occupation + ' at ' + this.school + '. My grades? ' + this.grade);
+            log('Wasup dawg, Im ' + this.name + ', a ' + this.occupation + ' at ' + this.school + '. My grades? ' + this.grade);
         }
     });
 
     var Subclass = Superclass.extend({
-        construct: function() {
-            uber(); //first construct superclass
+        construct: function(name) {
+            uber(name); //first construct superclass
             this.school = 'Greendale';
             this.grade = 'does it even matter?';
             this.troyandabed = 'in the moooorrning';
@@ -40,8 +41,8 @@
         }
     });
 
-    var superc = new Superclass();
-    var subc = new Subclass();
+    var superc = new Superclass('Bob');
+    var subc = new Subclass('Jeff Winger');
     subc.overriden();
     subc.overriden.uber();
     subc.inherited();
